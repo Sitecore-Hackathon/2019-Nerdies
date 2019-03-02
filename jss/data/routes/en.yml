@@ -20,44 +20,111 @@ fields:
 # root placeholder names are defined in the package.json config section (required for Sitecore deployment)
 placeholders:
   jss-main:
-  - componentName: ContentBlock
-    fields:
-      heading: Welcome to Sitecore JSS
-      # to author content in YAML, use _multi-line values_ (prefixed with | + endline)
-      # as long as the same indent is preserved at the beginning of each line, no escaping
-      # is required at all in the value, making it easy to read
-      content: |
-          <p>Thanks for using JSS. Here are some resources to get you started:</p>
+    - componentName: StyleguideTracking
+      fields:
+        heading: Tracking
+        description: <p><small>JSS supports tracking Sitecore analytics events from within apps. Give it a try with this handy interactive demo.</small></p>
+    - componentName: ContentBlock
+      fields:
+        heading: Welcome To Sitecore Hackaton
+        content: |
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printe</p>
+    - componentName: Poi
+      fields:
+        name: Welcome to Sitecore JSS
+        api: 'AIzaSyCfd2PZlTQNjIwB7Mzu3oAiNDzesCZaDLI'
+        markerImage:
+          src: /data/media/img/pin-location.png
+          alt: Sitecore Logo
+        markerImageSelected:
+          src: /data/media/img/pin-location-active.png
+          alt: Sitecore Logo
 
-          <h3><a href="https://jss.sitecore.net" rel="noopener noreferrer">Documentation</a></h3>
-          <p>The official JSS documentation can help you with any JSS task from getting started to advanced techniques.</p>
 
-          <h3><a href="/styleguide">Styleguide</a></h3>
-          <p>The JSS styleguide is a living example of how to use JSS, hosted right in this app.
-          It demonstrates most of the common patterns that JSS implementations may need to use,
-          as well as useful architectural patterns.</p>
+        # to author content in YAML, use _multi-line values_ (prefixed with | + endline)
+        # as long as the same indent is preserved at the beginning of each line, no escaping
+        # is required at all in the value, making it easy to read
+        poiList:
+          # You can also define content lists using an _array of local item definitions_
+          # note that names are default auto-generated to be unique. Explicitly specified names must be unique.
+          # NOTE: local item definitions cannot be shared with other content list fields, and are
+          # generally not preferable compared to using shared definitions.
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Minneapolis
+              lat: 44.947464
+              lng: -93.320826
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle St. Louis Park
+              lat: 44.930810
+              lng: -93.347877
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Minneapolis
+              lat: 44.9553438
+              lng: -93.29719699999998
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Golden Valley
+              lat: 44.983935
+              lng: -93.380542
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Hopkins
+              lat: 44.924363
+              lng: -93.410158
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle St. Louis Park
+              lat: 44.973557
+              lng: -93.275111
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Minneapolis
+              lat: 44.97774
+              lng: -93.270909
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Edina
+              lat: 44.879826
+              lng: -93.321280
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
+          - template: Styleguide-ContentList-Item-Template
+            fields:
+              title: Chipotle Edina
+              lat: 44.970495
+              lng: -93.437430
+              content: |
+                <div><i class="fas fa-map-marked-alt"></i> 5480 Excelsior Blvd.<br>St. Louis Park</div>
+                <div><i class="fas fa-phone"></i>+92123456789</div>
 
-          <h3><a href="/graphql">GraphQL</a></h3>
-          <p>JSS features integration with the Sitecore GraphQL API to enable fetching non-route data from Sitecore - or from other internal backends as an API aggregator or proxy.
-          This route is a living example of how to use an integrate with GraphQL data in a JSS app.</p>
 
-          <div class="alert alert-dark">
-            <h4>This app is a boilerplate</h4>
-            <p>The JSS samples are a boilerplate, not a library. That means that any code in this app is meant for you to own and customize to your own requirements.</p>
-            <p>Want to get change the lint settings? Do it. Want to read manifest data from a MongoDB database? Go for it. This app is yours.</p>
-          </div>
 
-          <div class="alert alert-dark">
-            <h4>How to start with an empty app</h4>
-            <p>To remove all of the default sample content (the Styleguide and GraphQL routes) and start out with an empty JSS app:</p>
-            <ol>
-              <li>Delete <code>/src/app/components/styleguide-*</code> and <code>/src/app/components/graph-ql-*</code></li>
-              <li>Delete <code>/sitecore/definitions/components/styleguide-*</code>, <code>/sitecore/definitions/templates/styleguide-*</code>, and <code>/sitecore/definitions/components/graph-ql-*</code></li>
-              <li>Delete <code>/data/component-content/Styleguide</code></li>
-              <li>Delete <code>/data/content/Styleguide</code></li>
-              <li>Delete <code>/data/routes/styleguide</code> and <code>/data/routes/graphql</code></li>
-              <li>Delete <code>/data/dictionary/*.yml</code></li>
-            </ol>
-          </div>
+
+
 
 

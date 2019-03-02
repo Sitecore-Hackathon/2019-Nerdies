@@ -11,6 +11,8 @@
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "target": "es5",
+    "downlevelIteration": true,
+
     "newLine": "LF",
     "typeRoots": [
       "node_modules/@types"

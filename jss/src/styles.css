@@ -1,12 +1,21 @@
 a[target='_blank']:after {
-  content: '\1F5D7'
+    content: '\1F5D7'
 }
 
 .logo {
-  background-image: url('/assets/images/sc_logo.png');
-  display: block;
-  height: 51px;
-  width: 204px;
+    background-image: url('/assets/images/sc_logo.png');
+    display: block;
+    height: 51px;
+    width: 204px;
+}
+
+.store-locator-details {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.store-locator-details p{
+    font-size: 18px;
 }
 
 /*
@@ -14,4 +23,6 @@ a[target='_blank']:after {
   if you run the app in connected mode while the Sitecore cookies
   are set to edit mode.
 */
-.scChromeData, .scpm { display: none !important; }
+.scChromeData, .scpm {
+    display: none !important;
+}
