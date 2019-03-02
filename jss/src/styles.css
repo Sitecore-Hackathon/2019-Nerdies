@@ -1,21 +1,21 @@
 a[target='_blank']:after {
-    content: '\1F5D7'
+  content: '\1F5D7'
 }
 
 .logo {
-    background-image: url('/assets/images/sc_logo.png');
-    display: block;
-    height: 51px;
-    width: 204px;
+  background-image: url('/assets/images/sc_logo.png');
+  display: block;
+  height: 51px;
+  width: 204px;
 }
 
 .store-locator-details {
-    text-align: center;
-    margin: 50px auto;
+  text-align: center;
+  margin: 50px auto;
 }
 
-.store-locator-details p{
-    font-size: 18px;
+.store-locator-details p {
+  font-size: 18px;
 }
 
 /*
@@ -24,5 +24,25 @@ a[target='_blank']:after {
   are set to edit mode.
 */
 .scChromeData, .scpm {
-    display: none !important;
+  display: none !important;
+}
+
+.display-4 {
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
+.list-focus .loc-addr {
+  display: block;
+  padding: 20px 10px 20px;
+  color: #6f6f6f;
+  font-size: 15px;
+  line-height: 28px;
+}
+
+.logo {
+  width: 500px;
+  height: 80px;
+  background-repeat: no-repeat;
 }

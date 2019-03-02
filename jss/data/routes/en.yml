@@ -24,7 +24,7 @@ placeholders:
       fields:
         heading: Welcome To Sitecore Hackaton
         content: |
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printe</p>
+          <p></p>
     - componentName: Poi
       fields:
         name: Welcome to Sitecore JSS
