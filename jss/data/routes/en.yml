@@ -20,10 +20,6 @@ fields:
 # root placeholder names are defined in the package.json config section (required for Sitecore deployment)
 placeholders:
   jss-main:
-    - componentName: StyleguideTracking
-      fields:
-        heading: Tracking
-        description: <p><small>JSS supports tracking Sitecore analytics events from within apps. Give it a try with this handy interactive demo.</small></p>
     - componentName: ContentBlock
       fields:
         heading: Welcome To Sitecore Hackaton

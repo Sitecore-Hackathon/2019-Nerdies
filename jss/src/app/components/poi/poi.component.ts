@@ -2,9 +2,11 @@ import {Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/c
 import {ComponentRendering} from '@sitecore-jss/sitecore-jss-angular';
 import {initStoreLocator} from '../../../assets/js/jquery.storelocator';
 import GoogleMapsApiLoader from 'google-maps-api-loader';
-import {trackingApi} from '@sitecore-jss/sitecore-jss-tracking';
 import {environment} from '../../../environments/environment';
-import {dataFetcher} from '../../../data-fetcher';
+import {trackingApi} from '@sitecore-jss/sitecore-jss-tracking';
+import {JssDataFetcherService} from '../../jss-data-fetcher.service';
+import {TrackingRequestOptions} from '@sitecore-jss/sitecore-jss-tracking/types/trackingRequestOptions';
+import {JssContextService} from '../../jss-context.service';
 
 declare var jQuery: any;
 
@@ -19,30 +21,30 @@ export class PoiComponent implements OnInit, OnDestroy {
     @Input() rendering: ComponentRendering;
     private storeLocatorInstance;
     public addLocationsError;
+    trackingApiOptions: TrackingRequestOptions;
+    disconnectedMode = true;
 
-
-    ngOnInit() {
-        const trackingApiOptions = {
+    constructor(dataFetcher: JssDataFetcherService, private jssContext: JssContextService) {
+        this.trackingApiOptions = {
             host: environment.sitecoreApiHost,
             querystringParams: {
                 sc_apikey: environment.sitecoreApiKey,
             },
-            fetcher: dataFetcher
-
+            fetcher: dataFetcher.fetch,
         };
+    }
 
-        trackingApi
-        // note the events are an array - batching is supported
-            .trackEvent([{eventId: 'MV Test'}], trackingApiOptions)
-            .then(() => console.log('Page event pushed'))
-            .catch((error) => console.error(error));
-
+    ngOnInit() {
+      this.jssContext.state.subscribe((state) => {
+            console.log('The current Sitecore Context in styleguide-sitecore-context.component.ts is...', state);
+        });
+        this.disconnectedMode = this.rendering.dataSource === 'available-in-connected-mode';
 
         const API_KEY: any = this.rendering.fields.api;
         const MARKER_IMAGE: any = this.rendering.fields.markerImage;
         const MARKER_IMAGE_SELECTED: any = this.rendering.fields.markerImageSelected;
         const locations = [];
-
+        console.log(this.rendering);
         if (this.rendering.fields.poiList !== undefined) {
             for (const value of this.rendering.fields.poiList) {
 
@@ -243,7 +245,17 @@ export class PoiComponent implements OnInit, OnDestroy {
                             ]
                         }
                     ]
+                },
+                callbackMarkerClick: () => {
+                    this.trackBranchEvent('');
+
+                },
+                callbackListClick: () => {
+                    this.trackBranchEvent('');
+
                 }
+
+
                 //   debug: true
 
             });
@@ -260,6 +272,14 @@ export class PoiComponent implements OnInit, OnDestroy {
         }
     }
 
+    trackBranchEvent(eventTitle) {
+        if (!this.disconnectedMode) {
+            console.log(this.disconnectedMode)
+            trackingApi
+                .trackEvent([{eventId: `{F0CC9698-6D7E-43C3-8D21-E3A1551DF189}`}], this.trackingApiOptions);
+
+        }
+    }
 
     destroy() {
         this.storeLocatorInstance.storeLocator('destroy');
